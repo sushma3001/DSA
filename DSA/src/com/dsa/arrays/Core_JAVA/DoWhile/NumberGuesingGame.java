@@ -16,24 +16,24 @@ import java.util.Scanner;
  */
 public class NumberGuesingGame {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
+            int secretNumber = (int) (Math.random() * 50) + 1;
+            int count = 0;
+            int guess;
 
-        int secretNumber = (int) (Math.random() * 50) + 1;
-        int count = 0;
-        int guess;
-
-        do {
-            System.out.print("Guess a random number within range 1 to 50: ");
-            guess = sc.nextInt();
-            count++;
-            if (guess > secretNumber) {
-                System.out.println("Too High");
-            } else if (guess < secretNumber) {
-                System.out.println("Too Low");
-            } else {
-                System.out.println("Correct! you got it in " + count + " attempts");
-            }
-        } while (guess != secretNumber);
+            do {
+                System.out.print("Guess a random number within range 1 to 50: ");
+                guess = sc.nextInt();
+                count++;
+                if (guess > secretNumber) {
+                    System.out.println("Too High");
+                } else if (guess < secretNumber) {
+                    System.out.println("Too Low");
+                } else {
+                    System.out.println("Correct! you got it in " + count + " attempts");
+                }
+            } while (guess != secretNumber);
+        }
     }
 
 }
